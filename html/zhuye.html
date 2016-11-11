@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>蘑菇街主页</title>
+    <link rel="stylesheet" href="../css/swiper.css"/>
+    <link rel="stylesheet" href="../css/gongyong.css"/>
+    <link rel="stylesheet" href="../css/zhuye.css"/>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/touch.js"></script>
+    <script src="../js/swiper.js"></script>
+    <script src="../js/iscroll.js"></script>
+    <script src="../js/swiper.animate.js"></script>
+    <script src="../js/zhuye.js"></script>
+    </head>
+<body>
+<div id="zhuye-wrap" class="wrap">
+      <header>
+          <div class="search">
+              <div class="chaxun">
+                  <a class="im-talk iconfont" href="javascript:;">&#xe608;</a>
+                  <form class="form" action="http://m.mogujie.com/wall/s">
+                      <span class="iconfont">&#xe600;</span>
+                      <input class="search" type="text" name="q" placeholder=" 简约百搭欧美大牌短靴 ">
+                  </form>
+                  <a class="cart iconfont" href="javascript:;">&#xe6c8;</a>
+              </div>
+          </div>
+      </header>
+      <section>
+    <div id="top">
+         <div id="banner">
+         <div class="swiper-container zhuye-banner">
+             <div class="swiper-wrapper">
+             </div>
+             <!-- 如果需要分页器 -->
+             <div class="swiper-pagination"></div>
+
+         </div>
+     </div>
+         <div id="banner-bottom">
+          <!--<a href="javascript:;"><img src="../img/" alt=""></a>-->
+       </div>
+         <div id="mod_content">
+        <ul>
+        </ul>
+      </div>
+         <div id="img_block">
+       <ul></ul>
+       </div>
+         <div id="lazyData">
+           <ul>
+               <!--<li><a href="javascript:;"><img src="" alt=""></a></li>-->
+           </ul>
+         </div>
+    </div>
+    <div class="top-bottom">
+        <div class="floor_title">
+            <p>买买惠</p>
+            <p class="po">热门促销</p>
+        </div>
+
+    </div>
+    <div class="module_row">
+       <ul>
+
+       </ul>
+    </div>
+    <div class="top-bottom">
+              <div class="floor_title">
+                  <p>正在流行</p>
+                  <p class="po">热门分类</p>
+              </div>
+
+          </div>
+    <div id="mod_row">
+        <ul>
+
+        </ul>
+    </div>
+    <div class="top-bottom">
+              <div class="floor_title">
+                  <p>猜你喜欢</p>
+              </div>
+
+          </div>
+    <div id="content">
+        <div id="goodlist">
+            <ul></ul>
+            <div id="pullUp" class="pull"></div>
+        </div>
+    </div>
+      </section>
+      <footer>
+          <ul class="footer-ul">
+              <li  class="active">
+                  <a href="zhuye.html">
+                      <span class="iconfont">&#xe674;</span>
+                      <strong>首页</strong></a>
+              </li>
+              <li>
+                  <a href="javascript:;">
+                      <span class="iconfont">&#xe609;</span>
+                      <strong>良品</strong></a>
+              </li>
+              <li>
+                  <a href="javascript:;">
+                      <span class="iconfont">&#xe607;</span>
+                      <strong>分类</strong></a>
+              </li>
+              <li>
+                  <a href="javascript:;">
+                      <span class="iconfont">&#xe634;</span>
+                      <strong>我的</strong></a>
+              </li>
+          </ul>
+      </footer>
+</div>
+<script type="text/javascript">
+    function obanner(){
+        $.ajax({
+            type:'post',
+            url: 'http://mce.mogucdn.com/jsonp/multiget/3?pids=7356%2C3756%2C24513%2C24522%2C24526&',
+            json:'callback',
+            dataType: 'jsonp',
+            success:function(one){
+                for(var i=0;i<one.data[3756].list.length;i++){
+
+                 $('.zhuye-banner .swiper-wrapper').append(
+                      '<div class="swiper-slide"><a href="'+one.data[3756].list[i].link+'"><img src='+ one.data[3756].list[i].image +' alt=""></a></div>'
+                 )
+             }
+              //banner-bottom
+                for(var i=0;i<one.data[24513].list.length;i++){
+                  $('#banner-bottom').append(
+                    '<div id="banner-bottom"><a href=" '+one.data[24513].list[i].link+' "><img src='+ one.data[24513].list[i].image +' alt="">'
+                  )
+                }
+                //mod_content
+                for(var i=0;i<one.data[24522].list.length;i++){
+                    $('#mod_content ul').append(
+                      '<li><a href="'+one.data[24522].list[i].link+'"><img src='+one.data[24522].list[i].image+'></a></li>'
+                    )
+                }
+                //img_block
+                for(var i=0;i<one.data[24526].list.length;i++){
+                    $('#img_block ul').append(
+                            '<li><a href="'+one.data[24526].list[i].link+'"><img src='+one.data[24526].list[i].image+'></a></li>'
+                    )
+                }
+            }
+        })
+    }
+    obanner();
+    function main(){
+        $.ajax({
+            type:'post',
+            url:'http://mce.mogucdn.com/jsonp/multiget/3?pids=24532%2C3093%2C4746%2C4604&',
+            json:'callback',
+            dataType: 'jsonp',
+            success:function(two){
+         /* console.log(two);*/
+                for(var i=0;i<two.data[24532].list.length;i++){
+                    $('#lazyData ul').append(
+             '<li><a href="'+two.data[24532].list[i].link+'"><img src='+two.data[24532].list[i].image+' alt=""></a></li>'
+                    )
+                }
+                for(var i=0;i<two.data[3093].list.length;i++){
+                    $('.module_row ul').append(
+                    '<li><a href="'+two.data[3093].list[i].link+'"><div class="title-box"><div class="main-title">'+two.data[3093].list[i].title+'</div><div class="sub-title">'+two.data[3093].list[i].viceTitle+'</div></div><img src='+two.data[3093].list[i].image+'></a></li>'
+                    )
+                }
+                for(var i=0;i<two.data[4746].list.length;i++){
+               $('#mod_row ul').append(
+              '<li><a href="'+two.data[4746].list[i].link+'"><img src='+two.data[4746].list[i].image+' alt=""><div class="title">'+two.data[4746].list[i].title+'</div></a></li>'
+               )
+                }
+            }
+        })
+
+    } ;
+    main();
+    function content(){
+        $.ajax({
+            type:'post',
+            url:'http://list.mogujie.com/search?cKey=h5-shopping&fcid=&pid=9750&searchTag=&sort=pop&page=1&ratio=3%3A4&_version=1&',
+            json:'callback',
+            dataType: 'jsonp',
+            success:function(three){
+                console.log(three.result.wall.docs)
+                for(var i=0;i<three.result.wall.docs.length;i++){
+                 $('#goodlist ul').append(
+                 '<li><a href="'+three.result.wall.docs[i].link+'"><div class="goodimg"><img src='+three.result.wall.docs[i].img+' alt=""></div><div class="goodnew"><p class="goods_name">'+three.result.wall.docs[i].title+'</p><div class="tags"><img src='+three.result.wall.docs[i].leftbottom_taglist[0]+' alt=""></div></div><div class="bot_box clearfix"><p class="p_price fl">'+three.result.wall.docs[i].price+'</p><p class="p_feed fr">'+three.result.wall.docs[i].cfav+'</p></div></a></li>'
+                 )
+                }
+            }
+        })
+    };
+    content();
+    var
+            ocontent=null,
+            oScroll = null,
+            oPullUp = null;
+    setTimeout(function () {
+        oPullUp = $("#pullUp");
+        ocontent =$("#content");
+        oScroll = new iScroll("content", {
+            hScrollbar: false,
+            vScrollbar: false,
+            onScrollMove: function () {
+                if (this.y < this.maxScrollY && !oPullUp.hasClass("loading")) {
+                    oPullUp.addClass("loading").html("放手加载")
+                } else if (this.y >= this.maxScrollY) {
+                    oPullUp.removeClass("loading").html("上拉加载")
+                }
+            },
+            onScrollEnd: function () {
+                if (oPullUp.hasClass('loading')) {
+                    oPullUp.html('loading');
+                    pullUpdata()
+                }
+            },
+            onRefresh: function () {
+                if (oPullUp.hasClass("loading")) {
+                    oPullUp.removeClass("loading").html("上拉加载")
+                }
+            }
+        })
+    }, 5000)
+    function pullUpdata(){
+        var num=1;
+        num++;
+        $.ajax({
+            type:"post",
+            url:"http://list.mogujie.com/search?cKey=h5-shopping&fcid=&pid=9750&searchTag=&sort=pop&page='+num+'&ratio=3%3A4&_version=1&",
+            dataType:"jsonp",
+            json:"callback",
+            async:true,
+            success: function(three){
+                for(var i=0;i<three.result.wall.docs.length;i++){
+                    $('#goodlist ul').append(
+                            '<li><a href="'+three.result.wall.docs[i].link+'"><div class="goodimg"><img src='+three.result.wall.docs[i].img+' alt=""></div><div class="goodnew"><p class="goods_name">'+three.result.wall.docs[i].title+'</p><div class="tags"><img src='+three.result.wall.docs[i].leftbottom_taglist[0]+' alt=""></div></div><div class="bot_box clearfix"><p class="p_price fl">'+three.result.wall.docs[i].price+'</p><p class="p_feed fr">'+three.result.wall.docs[i].cfav+'</p></div></a></li>'
+                    )
+                }
+            }
+        });
+    };
+
+</script>
+</body>
+</html>
