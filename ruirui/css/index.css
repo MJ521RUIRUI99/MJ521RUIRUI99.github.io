@@ -1,0 +1,49 @@
+*{
+  margin:0;
+  padding:0;	
+}
+body,html{
+	overflow: hidden;
+	height:100%;
+	
+}
+body{
+	font-size:14px;
+}
+html{
+	font-size:31.25vw;
+}
+#box ,#box .swiper-container ,#box .swiper-container .swiper-wrapper{
+	width:100%;
+	height:100%;
+}
+#box .swiper-wrapper .banner{
+	width:100%;
+	height:100%;
+	position:relative;
+}
+.tu{
+	width:100%;
+}
+.tu img{
+	width:100%;
+	height:100%;
+}
+.xinxi{
+	width:94%;
+	height:1.15rem;
+	
+	padding-left:3%;
+	padding-right:3%;
+	padding-top:0.10rem;
+	position:absolute;
+	bottom:0;
+	left:0;
+}
+.xinxi p{
+	text-indent: 0.02rem;
+	font-size:0.16rem;
+	color:#000000;
+	line-height:0.2rem;
+	height:0.20rem;
+	}
