@@ -72,20 +72,25 @@
         	</div>
         </div>
         <div class="swiper-slide banner banner08">
-        	<div class="tu"><img src="img/img11.jpg" alt="" class="ani" swiper-animate-effect="slideInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.1s"/></div>
+        	<div class="tu"><img src="img/img11.jpg" alt="" class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.1s"/></div>
+        	<div class="xinxi">
+        	<p class="ani" swiper-animate-effect="flip" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">我的公主：</p>
+        	<p class="ani" swiper-animate-effect="flip" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">早晚天凉，你加班的晚，注意保暖呦。</p>
+        	<p class="ani" swiper-animate-effect="flip" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">有什么委屈一定要和我说，我一直都在你身边，无论何时都和你共进退。</p>
         </div>
-        <div class="xinxi">
-        	<p>我的公主：</p>
-        	<p>早晚天凉，你加班的晚，注意保暖呦。</p>
-        	<p>有什么委屈一定要和我说，我一直都在你身边，无论何时都和你共进退。</p>
         </div>
+        
      </div>
     <!-- 如果需要分页器 -->
     <div class="swiper-pagination"></div>
     
    </div>
+<div id="audio_btn">
+						<audio id="audio" src="audio/yinyue.mp3" id="media" autoplay="autoplay"></audio>
+						<img src="img/yinyue.svg" alt="" class="audio_btn" />
+					</div>
 </div>
-<script type="text/javascript">        
+<!--<script type="text/javascript">        
   var mySwiper = new Swiper ('#box .swiper-container', {
     direction: 'vertical',
     loop: true,
@@ -103,6 +108,45 @@
   } 
    
   })        
-  </script>
+  </script>-->
+  <script type="text/javascript">
+					var mySwiper = new Swiper('.swiper-container', {
+						direction: 'vertical',
+						loop: true,
+						keyboardControl: true,
+						mousewheelControl: true,
+						 autoplay : 6000,
+						/*paginationType : 'fraction',*/
+						paginationClickable: true,
+						paginationType: 'progress',
+
+						// 如果需要分页器
+						pagination: '.swiper-pagination',
+						onInit: function(swiper) { //Swiper2.x的初始化是onFirstInit
+							swiperAnimateCache(swiper); //隐藏动画元素 
+							swiperAnimate(swiper); //初始化完成开始动画
+						},
+						onSlideChangeEnd: function(swiper) {
+							swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+						}
+					})
+					var oPlay = $("#audio_btn");
+					var oAudio = $("#audio");
+					var oPlayCl = $("#audio_btn .audio_btn");
+
+					var obtn = true;
+					oPlay.click(function() {
+						if(obtn) {
+							oPlayCl.removeClass('audio_btn');
+							oAudio[0].pause();
+							obtn = false;
+						} else {
+							oAudio[0].play();
+							oPlayCl.addClass('audio_btn');
+							obtn = true;
+						}
+
+					})
+				</script>
 	</body>
 </html>
